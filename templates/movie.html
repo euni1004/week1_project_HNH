@@ -66,142 +66,142 @@
 
 </head>
 <body>
-<!--<nav class="navbar is-fixed-top is-white" role="navigation" aria-label="main navigation">-->
-<!--    <div class="navbar-brand">-->
-<!--        <a class="navbar-item" href="/">-->
-<!--            <img src="{{ url_for('static', filename='logo.png') }}">-->
-<!--            <strong class="is-sparta"-->
-<!--                    style="font-family: 'Gamja Flower', sans-serif;font-size: 35px;">HNH</strong>-->
-<!--        </a>-->
-<!--        <div class="buttons">-->
-<!--            <button class="button primary">맛집</button>-->
-<!--            <button class="button is-primary">영화</button>-->
-<!--        </div>-->
-<!--    </div>-->
+<nav class="navbar is-fixed-top is-white" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <img src="{{ url_for('static', filename='logo.png') }}">
+            <strong class="is-sparta"
+                    style="font-family: 'Gamja Flower', sans-serif;font-size: 35px;">HNH</strong>
+        </a>
+        <div class="buttons">
+            <button class="button primary">맛집</button>
+            <button class="button is-primary">영화</button>
+        </div>
+    </div>
 
-<!--</nav>-->
-<!--<section class="section">-->
-<!--    <article class="media">-->
-<!--        <figure class="media-left" style="align-self: center">-->
-<!--            <a class="image is-32x32" href="/user/{{ user_info.username }}">-->
-<!--                <img class="is-rounded" src="{{ url_for('static', filename=user_info.profile_pic_real) }}">-->
-<!--            </a>-->
-<!--        </figure>-->
-<!--        <div class="media-content">-->
-<!--            <div class="field">-->
-<!--                <p class="control">-->
-<!--                    <input id="input-post" class="input is-rounded" placeholder="맛집 등록!"-->
-<!--                           onclick='$("#modal-post").addClass("is-active")'-->
-<!--                    ></p>-->
+</nav>
+<section class="section">
+    <article class="media">
+        <figure class="media-left" style="align-self: center">
+            <a class="image is-32x32" href="/user/{{ user_info.username }}">
+                <img class="is-rounded" src="{{ url_for('static', filename=user_info.profile_pic_real) }}">
+            </a>
+        </figure>
+        <div class="media-content">
+            <div class="field">
+                <p class="control">
+                    <input id="input-post" class="input is-rounded" placeholder="맛집 등록!"
+                           onclick='$("#modal-post").addClass("is-active")'
+                    ></p>
 
-<!--            </div>-->
-<!--        </div>-->
-<!--    </article>-->
-<!--    <div class="modal" id="modal-post">-->
-<!--        <div class="modal-background" onclick='$("#modal-post").removeClass("is-active")'></div>-->
-<!--        <div class="modal-content">-->
-<!--            <div class="box">-->
-<!--                <article class="media">-->
-<!--                    <div class="media-content">-->
-<!--                        <div class="field">-->
-<!--                            <label class="label" for="input-name">음식점 이름</label>-->
+            </div>
+        </div>
+    </article>
+    <div class="modal" id="modal-post">
+        <div class="modal-background" onclick='$("#modal-post").removeClass("is-active")'></div>
+        <div class="modal-content">
+            <div class="box">
+                <article class="media">
+                    <div class="media-content">
+                        <div class="field">
+                            <label class="label" for="input-name">음식점 이름</label>
 
-<!--                            <p class="control">-->
+                            <p class="control">
 
-<!--                                <input id="input-name" class="input"-->
-<!--                                       placeholder="음식점 이름" value="">-->
-<!--                            </p>-->
-<!--                        </div>-->
-<!--                        <div class="field">-->
-<!--                            <label class="label" for="input-loc">음식점 위치</label>-->
+                                <input id="input-name" class="input"
+                                       placeholder="음식점 이름" value="">
+                            </p>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="input-loc">음식점 위치</label>
 
-<!--                            <p class="control">-->
+                            <p class="control">
 
-<!--                                <input id="input-loc" class="input"-->
-<!--                                       placeholder="서울특별시 00동" value="">-->
-<!--                            </p>-->
-<!--                        </div>-->
-<!--                        <div class="field">-->
-<!--                            <label class="label" for="input-pic">음식점 사진</label>-->
+                                <input id="input-loc" class="input"
+                                       placeholder="서울특별시 00동" value="">
+                            </p>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="input-pic">음식점 사진</label>
 
-<!--                            <div class="control is-expanded">-->
-<!--                                <div class="file has-name">-->
-<!--                                    <label class="file-label" style="width:100%">-->
-<!--                                        <input id="input-pic" class="file-input" type="file"-->
-<!--                                               name="resume">-->
-<!--                                        <span class="file-cta"><span class="file-icon"><i-->
-<!--                                                class="fa fa-upload"></i></span>-->
-<!--                                <span class="file-label">파일 선택</span>-->
-<!--                            </span>-->
-<!--                                        <span id="file-name" class="file-name"-->
-<!--                                              style="width:100%;max-width:100%"></span>-->
-<!--                                    </label>-->
-<!--                                </div>-->
+                            <div class="control is-expanded">
+                                <div class="file has-name">
+                                    <label class="file-label" style="width:100%">
+                                        <input id="input-pic" class="file-input" type="file"
+                                               name="resume">
+                                        <span class="file-cta"><span class="file-icon"><i
+                                                class="fa fa-upload"></i></span>
+                                <span class="file-label">파일 선택</span>
+                            </span>
+                                        <span id="file-name" class="file-name"
+                                              style="width:100%;max-width:100%"></span>
+                                    </label>
+                                </div>
 
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="field">-->
-<!--                            <label class="label" for="textarea-about">음식점 설명</label>-->
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="textarea-about">음식점 설명</label>
 
-<!--                            <p class="control">-->
+                            <p class="control">
 
-<!--                        <textarea id="textarea-about" class="textarea"-->
-<!--                                  placeholder="음식점 설명 작성"></textarea>-->
-<!--                            </p>-->
-<!--                        </div>-->
-<!--                        <nav class="level is-mobile">-->
-<!--                            <div class="level-left">-->
+                        <textarea id="textarea-about" class="textarea"
+                                  placeholder="음식점 설명 작성"></textarea>
+                            </p>
+                        </div>
+                        <nav class="level is-mobile">
+                            <div class="level-left">
 
-<!--                            </div>-->
-<!--                            <div class="level-right">-->
-<!--                                <div class="level-item">-->
-<!--                                    <a class="button is-sparta" onclick="update_food()">업데이트</a>-->
-<!--                                </div>-->
-<!--                                <div class="level-item">-->
-<!--                                    <a class="button is-sparta is-outlined"-->
-<!--                                       onclick='$("#modal-post").removeClass("is-active")'>취소</a>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </nav>-->
-<!--                    </div>-->
-<!--                </article>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <button class="modal-close is-large" aria-label="close"-->
-<!--                onclick='$("#modal-post").removeClass("is-active")'></button>-->
-<!--    </div>-->
-<!--</section>-->
+                            </div>
+                            <div class="level-right">
+                                <div class="level-item">
+                                    <a class="button is-sparta" onclick="update_food()">업데이트</a>
+                                </div>
+                                <div class="level-item">
+                                    <a class="button is-sparta is-outlined"
+                                       onclick='$("#modal-post").removeClass("is-active")'>취소</a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"
+                onclick='$("#modal-post").removeClass("is-active")'></button>
+    </div>
+</section>
 
-<!--<div id="main-card">-->
-<!--    <div class="card">-->
-<!--        <div class="card-image">-->
-<!--            <figure class="image is-4by3">-->
-<!--                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">-->
-<!--                {# 음식점 사진넣기 사진에 링크 넣고싶으면 a태그로 바꾸기#}-->
-<!--            </figure>-->
-<!--        </div>-->
-<!--        <div class="card-content">-->
-<!--            <div class="media">-->
-<!--                <div class="media-left">-->
-<!--                    <a class="image is-48x48" href="/user/keh5164">-->
-<!--                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">-->
-<!--                        {# 유저사진넣기#}-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--                <div class="media-content">-->
-<!--                    <a class="title is-4" href="/user/keh5164">안녕</a><br>-->
-<!--                    <a class="subtitle is-6" href="/user/keh5164">유저 닉네임 주소도 바꾸기</a>-->
-<!--                </div>-->
-<!--            </div>-->
+<div id="main-card">
+    <div class="card">
+        <div class="card-image">
+            <figure class="image is-4by3">
+                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                {# 음식점 사진넣기 사진에 링크 넣고싶으면 a태그로 바꾸기#}
+            </figure>
+        </div>
+        <div class="card-content">
+            <div class="media">
+                <div class="media-left">
+                    <a class="image is-48x48" href="/user/keh5164">
+                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                        {# 유저사진넣기#}
+                    </a>
+                </div>
+                <div class="media-content">
+                    <a class="title is-4" href="/user/keh5164">안녕</a><br>
+                    <a class="subtitle is-6" href="/user/keh5164">유저 닉네임 주소도 바꾸기</a>
+                </div>
+            </div>
 
-<!--            <div class="content">-->
-<!--                음식점 설명-->
-<!--                <br>-->
-<!--                <time datetime="2016-1-1">날짜넣기</time>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+            <div class="content">
+                음식점 설명
+                <br>
+                <time datetime="2016-1-1">날짜넣기</time>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 </body>
