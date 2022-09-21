@@ -29,10 +29,10 @@
     <script src="{{ url_for('static', filename='myjs.js') }}"></script>
     <script>
         $(document).ready(function () {
-            get_food_posts()
+            get_movie_posts()
         })
 
-        function update_food() {
+        function update_movie() {
             let name = $('#input-name').val()
             let loc = $('#input-loc').val()
             let file = $('#input-pic')[0].files[0]
@@ -48,7 +48,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/update_foodloc",
+                url: "/update_movieloc",
                 data: form_data,
                 cache: false,
                 contentType: false,
@@ -91,7 +91,7 @@
         <div class="media-content">
             <div class="field">
                 <p class="control">
-                    <input id="input-post" class="input is-rounded" placeholder="맛집 등록!"
+                    <input id="input-post" class="input is-rounded" placeholder="영화 등록!"
                            onclick='$("#modal-post").addClass("is-active")'
                     ></p>
 
@@ -105,25 +105,16 @@
                 <article class="media">
                     <div class="media-content">
                         <div class="field">
-                            <label class="label" for="input-name">음식점 이름</label>
+                            <label class="label" for="input-name">영화 제목</label>
 
                             <p class="control">
 
                                 <input id="input-name" class="input"
-                                       placeholder="음식점 이름" value="">
+                                       placeholder="영화 제목을 입력해주세요." value="">
                             </p>
                         </div>
                         <div class="field">
-                            <label class="label" for="input-loc">음식점 위치</label>
-
-                            <p class="control">
-
-                                <input id="input-loc" class="input"
-                                       placeholder="서울특별시 00동" value="">
-                            </p>
-                        </div>
-                        <div class="field">
-                            <label class="label" for="input-pic">음식점 사진</label>
+                            <label class="label" for="input-pic">영화 포스터를 입력해주세요.</label>
 
                             <div class="control is-expanded">
                                 <div class="file has-name">
@@ -142,12 +133,12 @@
                             </div>
                         </div>
                         <div class="field">
-                            <label class="label" for="textarea-about">음식점 설명</label>
+                            <label class="label" for="textarea-about">Comment</label>
 
                             <p class="control">
 
                         <textarea id="textarea-about" class="textarea"
-                                  placeholder="음식점 설명 작성"></textarea>
+                                  placeholder="영화를 소개해주세요."></textarea>
                             </p>
                         </div>
                         <nav class="level is-mobile">
@@ -156,7 +147,7 @@
                             </div>
                             <div class="level-right">
                                 <div class="level-item">
-                                    <a class="button is-sparta" onclick="update_food()">업데이트</a>
+                                    <a class="button is-sparta" onclick="update_movie()">업데이트</a>
                                 </div>
                                 <div class="level-item">
                                     <a class="button is-sparta is-outlined"

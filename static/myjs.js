@@ -167,3 +167,49 @@ function get_food_posts() {
     })
 }
 
+function get_movie_posts() {
+    $("#main-card").empty()
+    $.ajax({
+        type: "GET", url: `/get_movieposts`, data: {}, success: function (response) {
+            console.log(response)
+            if (response["result"] == "success") {
+                let movielocs = response["movielocs"]
+                for (let i = 0; i < movielocs.length; i++) {
+                    let movieloc = movielocs[i]
+                    let time_post = new Date(movieloc["date"])
+                    let time_before = time2str(time_post)
+
+                    let html_temp = `<div class="card">
+                                        <div class="card-image">
+                                            <figure class="image is-4by3">
+                                                <img src="/static/${movieloc['movie_file']}" alt="Placeholder image">
+                                            </figure>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <a class="image is-48x48" href="/user/${movieloc['username']}">
+                                                        <img src="/static/${movieloc['profile_pic_real']}" alt="Placeholder image">
+
+                                                    </a>
+                                                </div>
+                                                <div class="media-content">
+                                                    <a class="title is-4" href="/user/${movieloc['username']}">${movieloc['username']}</a><br>
+                                                    <a class="subtitle is-6" href="/user/${movieloc['username']}">${movieloc['profile_name']}</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="content">
+                                                ${movieloc['movie_comment']}
+                                                <br>
+                                                <time datetime="2016-1-1">${time_before}</time>
+                                            </div>
+                                        </div>
+                                    </div>`
+                    $("#main-card").append(html_temp)
+                }
+            }
+        }
+    })
+}
+
