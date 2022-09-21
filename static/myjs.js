@@ -135,7 +135,7 @@ function get_food_posts() {
 
                     let html_temp = `<div class="card">
                                         <div class="card-image">
-                                            <a class="image is-4by3" href="/foodcontent/${foodloc['food_name']}">
+                                            <a class="image is-4by3" href="/foodcontent/${foodloc['date']}">
                                                 <img src="/static/${foodloc['food_file']}" alt="Placeholder image">
                                             </a>
                                         </div>
@@ -153,7 +153,7 @@ function get_food_posts() {
                                                     
                                                 </div>
                                             </div>
-                                            <a href="/foodcontent/${foodloc['food_name']}" style="color: black">${foodloc['food_comment']}</a> <br>
+                                            <a href="/foodcontent/${foodloc['date']}" style="color: black">${foodloc['food_comment']}</a> <br>
                                             <time datetime="2016-1-1">${time_before}</time>
                                         </div>
                                     </div>`

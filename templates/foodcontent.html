@@ -27,6 +27,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script src="{{ url_for('static', filename='myjs.js') }}"></script>
+    <script src="https://kit.fontawesome.com/421beb5950.js" crossorigin="anonymous"></script>
 
     <script>
     </script>
@@ -74,10 +75,10 @@
         </div>
 
         <div class="media-content">
-            {{ food_info.food_loc }} <br>
-            {{ food_info.food_name }}<br>
-            {{ food_info.food_comment }} <br>
-            <time datetime="2016-1-1">{{ food_info.date }}</time>
+            <br><i class="fa-solid fa-utensils"></i>&emsp;&emsp;{{ food_info.food_name }}<br>
+            <i class="fa-regular fa-map"></i>&emsp;&emsp;{{ food_info.food_loc }} <br>
+
+            <i class="fa-regular fa-comment"></i>&emsp;&emsp;{{ food_info.food_comment }} <br>
         </div>
     </div>
 </div>

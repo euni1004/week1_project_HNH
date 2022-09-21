@@ -41,12 +41,10 @@ def movie_home():
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
-@app.route('/foodcontent/<food_name>')
-def foodcontent_home(food_name):
-
+@app.route('/foodcontent/<date>')
+def foodcontent_home(date):
     try:
-        food_info = db.foodloc.find_one({"food_name": food_name})
-
+        food_info = db.foodloc.find_one({"date": date})
         return render_template('foodcontent.html', food_info=food_info)
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("home"))

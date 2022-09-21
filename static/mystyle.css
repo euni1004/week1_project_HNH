@@ -55,4 +55,6 @@ input::-webkit-calendar-picker-indicator {
 .foodcontent{
     width: 75%;
     margin: 0 auto;
+    background-color: #CEF6CE;
 }
+
