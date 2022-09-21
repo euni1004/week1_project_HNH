@@ -153,7 +153,7 @@ function get_food_posts() {
                                                     
                                                 </div>
                                             </div>
-                                            <a href="/foodcontent/${foodloc['date']}" style="color: black">${foodloc['food_comment']}</a> <br>
+                                            <a href="/foodcontent/${foodloc['date']}" style="color: black">📄&emsp;${foodloc['food_comment']}</a> <br>
                                             <time datetime="2016-1-1">${time_before}</time>
                                         </div>
                                     </div>`
@@ -163,4 +163,50 @@ function get_food_posts() {
         }
     })
 }
+
+function get_movie_posts() {
+    $("#main-card").empty()
+    $.ajax({
+        type: "GET", url: `/get_movieposts`, data: {}, success: function (response) {
+            console.log(response)
+            if (response["result"] == "success") {
+                let movies= response["movies"]
+                for (let i = 0; i < movies.length; i++) {
+                    let movie = movies[i]
+                    let time_post = new Date(movie["date"])
+                    let time_before = time2str(time_post)
+
+                    let html_temp = `<div class="card">
+                                        <div class="card-image">
+                                            <a class="image is-4by3">
+                                                <img src="/static/${movie['movie_file']}" alt="Placeholder image">
+                                            </a>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <a class="image is-48x48" href="/user/${movie['username']}">
+                                                        <img src="/static/${movie['profile_pic_real']}" alt="Placeholder image">
+
+                                                    </a>
+                                                </div>
+                                                <div class="media-content">
+                                                    <a class="title is-4"href="/user/${movie['username']}">${movie['profile_name']}</a><br>
+                                                    <a class="subtitle is-6"  href="/user/${movie['username']}">@${movie['username']}</a>
+                                                    
+                                                </div>
+                                            </div>
+                                                🎬&emsp;${movie['movie_name']} <br>
+                                                📄&emsp;${movie['movie_comment']} <br>
+                                            <time datetime="2016-1-1">${time_before}</time>
+                                        </div>
+                                    </div>`
+                    $("#main-card").append(html_temp)
+                }
+            }
+        }
+    })
+}
+
+
 
