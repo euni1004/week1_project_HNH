@@ -32,6 +32,12 @@
             get_food_posts()
         })
 
+        function sign_out() {
+            $.removeCookie('mytoken', {path: '/'});
+            alert('로그아웃!')
+            window.location.href = "/login"
+        }
+
         function update_food() {
             let name = $('#input-name').val()
             let loc = $('#input-loc').val()
@@ -76,6 +82,13 @@
         <div class="buttons">
             <button class="button is-primary">맛집</button>
             <button class="button primary" onclick='location.href="/movie"'>영화</button>
+            <div class="logoutbu">
+                <a class="button level-item has-text-centered is-sparta is-outlined" aria-label="logout"
+                   onclick="sign_out()">
+                    로그아웃&nbsp;&nbsp;&nbsp;<span class="icon is-small"><i class="fa fa-sign-out"
+                                                                         aria-hidden="true"></i></span>
+                </a>
+            </div>
         </div>
     </div>
 
