@@ -1,10 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+
+    <!-- Webpage Title -->
+    <title>{{ food_info.food_name }} | HNH</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <meta property="og:title" content="HNH - 누구보다 빠르게 남들과는 다르게"/>
+    <meta property="og:description" content="mini project for Web Plus"/>
+    <meta property="og:image" content="https://ifh.cc/g/810Mnw.png"/>
+
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <!-- Font Awesome CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='mystyle.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="{{ url_for('static', filename='myjs.js') }}"></script>
+
+    <script>
+    </script>
 </head>
 <body>
+<nav class="navbar is-fixed-top is-white" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <img src="{{ url_for('static', filename='logo.png') }}">
+            <strong class="is-sparta"
+                    style="font-family: 'Gamja Flower', sans-serif;font-size: 35px;">HNH</strong>
+        </a>
+        <div class="buttons">
+            <a class="button primary" onclick='location.href="/"'>맛집</a>
+            <a class="button primary" onclick='location.href="/movie"'>영화</a>
+            <div class="logoutbu">
+                <a class="button level-item has-text-centered is-sparta is-outlined" aria-label="logout"
+                   onclick="sign_out()">
+                    로그아웃&nbsp;&nbsp;&nbsp;<span class="icon is-small"><i class="fa fa-sign-out"
+                                                                         aria-hidden="true"></i></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="foodcontent">
+    <div class="card-image">
+        <figure class="image is-4by4">
+            <img src="{{ url_for('static', filename=food_info.food_file) }}" alt="Placeholder image">
 
+        </figure>
+    </div>
+    <div class="card-content">
+        <div class="media">
+            <div class="media-left">
+                <a class="image is-48x48" href="/user/{{ food_info.username }}">
+                    <img src="{{ url_for('static', filename=food_info.profile_pic_real) }}" alt="Placeholder image">
+
+                </a>
+            </div>
+            <div class="media-content">
+                <a class="title is-4" href="/user/{{ food_info.username }}">{{ food_info.username }}</a><br>
+                <a class="subtitle is-6" href="/user/{{ food_info.username }}">{{ food_info.profile_name}}</a>
+            </div>
+        </div>
+
+        <div class="media-content">
+            {{ food_info.food_loc }} <br>
+            {{ food_info.food_name }}<br>
+            {{ food_info.food_comment }} <br>
+            <time datetime="2016-1-1">{{ food_info.date }}</time>
+        </div>
+    </div>
+</div>
 </body>
 </html>

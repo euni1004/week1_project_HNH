@@ -41,6 +41,17 @@ def movie_home():
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
+@app.route('/foodcontent/<food_name>')
+def foodcontent_home(food_name):
+
+    try:
+        food_info = db.foodloc.find_one({"food_name": food_name})
+
+        return render_template('foodcontent.html', food_info=food_info)
+    except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
+        return redirect(url_for("home"))
+
+
 @app.route('/login')
 def login():
     msg = request.args.get("msg")
@@ -209,10 +220,7 @@ def get_posts():
 
 @app.route("/get_foodposts", methods=['GET'])
 def get_food():
-    token_receive = request.cookies.get('mytoken')
     try:
-        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        user_info = db.users.find_one({"username": payload["id"]})
         foodlocs = list(db.foodloc.find({}, {'_id': False}))
         return jsonify({"result": "success", "msg": "포스팅을 가져왔습니다.", "foodlocs": foodlocs})
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):

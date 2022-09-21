@@ -135,9 +135,9 @@ function get_food_posts() {
 
                     let html_temp = `<div class="card">
                                         <div class="card-image">
-                                            <figure class="image is-4by3">
+                                            <a class="image is-4by3" href="/foodcontent/${foodloc['food_name']}">
                                                 <img src="/static/${foodloc['food_file']}" alt="Placeholder image">
-                                            </figure>
+                                            </a>
                                         </div>
                                         <div class="card-content">
                                             <div class="media">
@@ -148,16 +148,13 @@ function get_food_posts() {
                                                     </a>
                                                 </div>
                                                 <div class="media-content">
-                                                    <a class="title is-4" href="/user/${foodloc['username']}">${foodloc['username']}</a><br>
-                                                    <a class="subtitle is-6" href="/user/${foodloc['username']}">${foodloc['profile_name']}</a>
+                                                    <a class="title is-4"href="/user/${foodloc['username']}">${foodloc['profile_name']}</a><br>
+                                                    <a class="subtitle is-6"  href="/user/${foodloc['username']}">@${foodloc['username']}</a>
+                                                    
                                                 </div>
                                             </div>
-
-                                            <div class="content">
-                                                ${foodloc['food_comment']}
-                                                <br>
-                                                <time datetime="2016-1-1">${time_before}</time>
-                                            </div>
+                                            <a href="/foodcontent/${foodloc['food_name']}" style="color: black">${foodloc['food_comment']}</a> <br>
+                                            <time datetime="2016-1-1">${time_before}</time>
                                         </div>
                                     </div>`
                     $("#main-card").append(html_temp)
