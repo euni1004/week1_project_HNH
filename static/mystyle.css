@@ -46,3 +46,7 @@ input::-webkit-calendar-picker-indicator {
     float: left;
 
 }
+
+.logoutbu {
+    text-align:right;
+}
