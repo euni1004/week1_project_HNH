@@ -58,3 +58,6 @@ input::-webkit-calendar-picker-indicator {
     background-color: #CEF6CE;
 }
 
+.media {
+    margin: 20px;
+}
