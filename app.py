@@ -49,6 +49,14 @@ def foodcontent_home(date):
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("home"))
 
+@app.route('/moviecontent/<date>')
+def moviecontent_home(date):
+    try:
+        movie_info = db.movieloc.find_one({"date": date})
+        return render_template('moviecontent.html', movie_info=movie_info)
+    except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
+        return redirect(url_for("movie_home"))
+
 
 @app.route('/login')
 def login():
@@ -84,7 +92,7 @@ def sign_in():
             'id': username_receive,
             'exp': datetime.utcnow() + timedelta(seconds=60 * 60 * 24)  # 로그인 24시간 유지
         }
-        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256').decode('utf-8')
+        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
 
         return jsonify({'result': 'success', 'token': token})
     # 찾지 못하면
@@ -176,6 +184,43 @@ def save_food():
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("home"))
 
+
+@app.route('/update_movieloc', methods=['POST'])
+def save_movie():
+    token_receive = request.cookies.get('mytoken')
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        user_info = db.users.find_one({"username": payload["id"]})
+        name_receive = request.form["fname_give"]
+        loc_receive = request.form["floc_give"]
+        file_receive = request.files["f_give"]
+        about_receive = request.form["fabout_give"]
+        today_receive = request.form["fdate_give"]
+
+        extension = file_receive.filename.split('.')[-1]
+        tos=today_receive.replace(':','')
+        filename = f'file_{tos}'
+        save_to = f'static/{filename}.{extension}'
+        file_receive.save(save_to)
+
+        new_doc = {
+            "username": user_info["username"],
+            "profile_name": user_info["profile_name"],
+            "profile_pic_real": user_info["profile_pic_real"],
+            "movie_name": name_receive,
+            "movie_loc": loc_receive,
+            "movie_comment": about_receive,
+            "movie_file": f'{filename}.{extension}',
+            "date": today_receive
+        }
+
+        db.movieloc.insert_one(new_doc)
+
+        return jsonify({"result": "success", 'msg': '영화를 등록했습니다.'})
+    except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
+        return redirect(url_for("movie_home"))
+
+
 @app.route('/posting', methods=['POST'])
 def posting():
     token_receive = request.cookies.get('mytoken')
@@ -223,6 +268,19 @@ def get_food():
         return jsonify({"result": "success", "msg": "포스팅을 가져왔습니다.", "foodlocs": foodlocs})
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("home"))
+
+
+@app.route("/get_movieposts", methods=['GET'])
+def get_movie():
+    token_receive = request.cookies.get('mytoken')
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        user_info = db.users.find_one({"username": payload["id"]})
+        movielocs = list(db.movieloc.find({}, {'_id': False}))
+        return jsonify({"result": "success", "msg": "포스팅을 가져왔습니다.", "movielocs": movielocs})
+    except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
+        return redirect(url_for("movie_home"))
+
 
 @app.route('/update_like', methods=['POST'])
 def update_like():
