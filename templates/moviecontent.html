@@ -30,6 +30,24 @@
     <script src="https://kit.fontawesome.com/421beb5950.js" crossorigin="anonymous"></script>
 
     <script>
+        function sign_out() {
+            $.removeCookie('mytoken', {path: '/'});
+            alert('로그아웃!')
+            window.location.href = "/login"
+        }
+
+        function del_movie(date) {
+            $.ajax({
+                type: "POST",
+                url: "/moviedel",
+                data: {delete_give: date},
+                success: function (response) {
+                    alert(response["msg"])
+                    window.location.reload()
+                    location.href = "/movie"
+                }
+            });
+        }
     </script>
 </head>
 <body>
@@ -57,7 +75,8 @@
 <div class="moviecontent">
     <div class="card-image">
         <figure class="image is-4by4">
-            <img src="{{ url_for('static', filename=movie_info.movie_file) }}" alt="Placeholder image" style="border-radius: 2em;">
+            <img src="{{ url_for('static', filename=movie_info.movie_file) }}" alt="Placeholder image"
+                 style="border-radius: 2em;">
 
         </figure>
     </div>
@@ -82,5 +101,12 @@
         </div>
     </div>
 </div>
+{% if status %}
+<div style="width: 87%; text-align: right " class="delbu">
+    <div style="display:inline-block">
+        <button class="button is-danger" onclick="del_movie('{{movie_info.date}}')"><i class="fa-regular fa-trash-can"></i></button>
+    </div>
+</div>
+{% endif %}
 </body>
 </html>

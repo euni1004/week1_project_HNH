@@ -53,19 +53,37 @@ def diary_home():
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
-@app.route('/foodcontent/<date>')
-def foodcontent_home(date):
+@app.route('/foodcontent/<date>/<username>')
+def foodcontent_home(date,username):
+    token_receive = request.cookies.get('mytoken')
     try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        status = (username == payload["id"])
         food_info = db.foodloc.find_one({"date": date})
-        return render_template('foodcontent.html', food_info=food_info)
+        return render_template('foodcontent.html', food_info=food_info,status=status)
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("home"))
 
-@app.route('/moviecontent/<date>')
-def moviecontent_home(date):
+@app.route("/fooddel", methods=["POST"])
+def fooddel():
+    del_receive = request.form['delete_give']
+    db.foodloc.delete_one({'date': del_receive})
+    return jsonify({'msg': '삭제완료'})
+
+@app.route("/moviedel", methods=["POST"])
+def moviedel():
+    del_receive = request.form['delete_give']
+    db.movie.delete_one({'date': del_receive})
+    return jsonify({'msg': '삭제완료'})
+
+@app.route('/moviecontent/<date>/<username>')
+def moviecontent_home(date,username):
+    token_receive = request.cookies.get('mytoken')
     try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        status = (username == payload["id"])
         movie_info = db.movie.find_one({"date": date})
-        return render_template('moviecontent.html', movie_info=movie_info)
+        return render_template('moviecontent.html', movie_info=movie_info,status=status)
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("home"))
 
@@ -277,6 +295,7 @@ def get_food():
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("home"))
 
+
 @app.route("/get_movieposts", methods=['GET'])
 def get_movie():
     try:
@@ -305,7 +324,6 @@ def update_like():
             db.likes.delete_one(doc)
         count = db.likes.count_documents({"post_id": post_id_receive, "type": type_receive})
         return jsonify({"result": "success", 'msg': 'updated', "count": count})
-        return jsonify({"result": "success", 'msg': 'updated'})
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("home"))
 
