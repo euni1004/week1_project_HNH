@@ -66,6 +66,11 @@ input::-webkit-calendar-picker-indicator {
 
 .moviecontent{
     width: 75%;
-    margin: 0 auto;
+    margin: 30px auto 10px auto;
     background-color: #CEF6CE;
+    border-radius: 2em;
+}
+
+.delbu{
+     margin-bottom: 30px;
 }
