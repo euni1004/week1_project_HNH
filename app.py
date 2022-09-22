@@ -272,10 +272,7 @@ def get_food():
 
 @app.route("/get_movieposts", methods=['GET'])
 def get_movie():
-    token_receive = request.cookies.get('mytoken')
     try:
-        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        user_info = db.users.find_one({"username": payload["id"]})
         movielocs = list(db.movieloc.find({}, {'_id': False}))
         return jsonify({"result": "success", "msg": "포스팅을 가져왔습니다.", "movielocs": movielocs})
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
