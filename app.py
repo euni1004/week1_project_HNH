@@ -68,7 +68,13 @@ def foodcontent_home(date,username):
 def fooddel():
     del_receive = request.form['delete_give']
     db.foodloc.delete_one({'date': del_receive})
-    return redirect(url_for("home", msg="삭제 완료"))
+    return jsonify({'msg': '삭제완료'})
+
+@app.route("/moviedel", methods=["POST"])
+def moviedel():
+    del_receive = request.form['delete_give']
+    db.movie.delete_one({'date': del_receive})
+    return jsonify({'msg': '삭제완료'})
 
 @app.route('/moviecontent/<date>/<username>')
 def moviecontent_home(date,username):
@@ -289,6 +295,7 @@ def get_food():
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("home"))
 
+
 @app.route("/get_movieposts", methods=['GET'])
 def get_movie():
     try:
@@ -317,7 +324,6 @@ def update_like():
             db.likes.delete_one(doc)
         count = db.likes.count_documents({"post_id": post_id_receive, "type": type_receive})
         return jsonify({"result": "success", 'msg': 'updated', "count": count})
-        return jsonify({"result": "success", 'msg': 'updated'})
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("home"))
 
