@@ -104,7 +104,7 @@
         <div class="media-content">
             <div class="field">
                 <p class="control">
-                    <input id="input-post" class="input is-rounded" placeholder="맛집 등록!"
+                    <input id="input-post" class="input is-rounded" placeholder="영화 등록!"
                            onclick='$("#modal-post").addClass("is-active")'
                     ></p>
 
@@ -118,25 +118,16 @@
                 <article class="media">
                     <div class="media-content">
                         <div class="field">
-                            <label class="label" for="input-name">음식점 이름</label>
+                            <label class="label" for="input-name">영화 이름</label>
 
                             <p class="control">
 
                                 <input id="input-name" class="input"
-                                       placeholder="음식점 이름" value="">
+                                       placeholder="영화 이름" value="">
                             </p>
                         </div>
                         <div class="field">
-                            <label class="label" for="input-loc">음식점 위치</label>
-
-                            <p class="control">
-
-                                <input id="input-loc" class="input"
-                                       placeholder="서울특별시 00동" value="">
-                            </p>
-                        </div>
-                        <div class="field">
-                            <label class="label" for="input-pic">음식점 사진</label>
+                            <label class="label" for="input-pic">영화 사진</label>
 
                             <div class="control is-expanded">
                                 <div class="file has-name">
@@ -153,14 +144,16 @@
                                 </div>
 
                             </div>
+                            <p style="color: red">사진은 꼭 넣어주세요</p>
                         </div>
+
                         <div class="field">
-                            <label class="label" for="textarea-about">음식점 설명</label>
+                            <label class="label" for="textarea-about">영화 설명</label>
 
                             <p class="control">
 
                         <textarea id="textarea-about" class="textarea"
-                                  placeholder="음식점 설명 작성"></textarea>
+                                  placeholder="영화 설명 작성"></textarea>
                             </p>
                         </div>
                         <nav class="level is-mobile">
@@ -169,7 +162,7 @@
                             </div>
                             <div class="level-right">
                                 <div class="level-item">
-                                    <a class="button is-sparta" onclick="update_food()">업데이트</a>
+                                    <a class="button is-sparta" onclick="update_movie()">업데이트</a>
                                 </div>
                                 <div class="level-item">
                                     <a class="button is-sparta is-outlined"
