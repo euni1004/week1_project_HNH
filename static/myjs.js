@@ -137,7 +137,7 @@ function get_food_posts() {
                     if (foodloc['food_comment'].length > 20) {
                         html_temp = `<div class="card">
                                         <div class="card-image">
-                                            <a class="image is-4by3" href="/foodcontent/${foodloc['date']}">
+                                            <a class="image is-4by3" href="/foodcontent/${foodloc['date']}/${foodloc['username']}">
                                                 <img src="/static/${foodloc['food_file']}" alt="Placeholder image">
                                             </a>
                                         </div>
@@ -163,7 +163,7 @@ function get_food_posts() {
                     } else {
                         html_temp = `<div class="card">
                                         <div class="card-image">
-                                            <a class="image is-4by3" href="/foodcontent/${foodloc['date']}">
+                                            <a class="image is-4by3" href="/foodcontent/${foodloc['date']}/${foodloc['username']}">
                                                 <img src="/static/${foodloc['food_file']}" alt="Placeholder image">
                                             </a>
                                         </div>
@@ -214,7 +214,7 @@ function get_movie_posts() {
                     if (movie['movie_comment'].length > 20) {
                         html_temp = `<div class="card">
                                         <div class="card-image">
-                                            <a class="image is-4by3" href="/moviecontent/${movie['date']}">
+                                            <a class="image is-4by3" href="/moviecontent/${movie['date']}/${movie['username']}">
                                                 <img src="/static/${movie['movie_file']}" alt="Placeholder image">
                                             </a>
                                         </div>
@@ -240,7 +240,7 @@ function get_movie_posts() {
                     } else {
                         html_temp = `<div class="card">
                                         <div class="card-image">
-                                            <a class="image is-4by3" href="/moviecontent/${movie['date']}">
+                                            <a class="image is-4by3" href="/moviecontent/${movie['date']}/${movie['username']}">
                                                 <img src="/static/${movie['movie_file']}" alt="Placeholder image">
                                             </a>
                                         </div>
