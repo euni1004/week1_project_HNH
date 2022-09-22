@@ -62,3 +62,9 @@ input::-webkit-calendar-picker-indicator {
     margin: 10px;
 }
 
+.moviecontent{
+    width: 75%;
+    margin: 0 auto;
+    background-color: #CEF6CE;
+}
+

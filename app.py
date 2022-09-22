@@ -61,6 +61,14 @@ def foodcontent_home(date):
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("home"))
 
+@app.route('/moviecontent/<date>')
+def moviecontent_home(date):
+    try:
+        movie_info = db.movieloc.find_one({"date": date})
+        return render_template('moviecontent.html', movie_info=movie_info)
+    except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
+        return redirect(url_for("movie_home"))
+
 
 @app.route('/login')
 def login():

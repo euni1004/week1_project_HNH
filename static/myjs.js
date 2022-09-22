@@ -268,5 +268,3 @@ function get_movie_posts() {
     })
 }
 
-
-
