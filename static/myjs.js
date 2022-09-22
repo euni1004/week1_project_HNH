@@ -132,7 +132,7 @@ function get_food_posts() {
                     let foodloc = foodlocs[i]
                     let time_post = new Date(foodloc["date"])
                     let time_before = time2str(time_post)
-                    let comment = foodloc['food_comment'].substring(0, 21)
+                    let comment = foodloc['food_comment'].substring(0, 16)
                     let html_temp = ""
                     if (foodloc['food_comment'].length > 20) {
                         html_temp = `<div class="card">
@@ -156,7 +156,7 @@ function get_food_posts() {
                                                 </div>
                                             </div>
                                             <a href="/foodcontent/${foodloc['date']}" style="color: black">🍚&emsp;${foodloc['food_name']}<br>
-                                            <a href="/foodcontent/${foodloc['date']}" style="color: black">📄&emsp;${comment}</a> <br>
+                                            <a href="/foodcontent/${foodloc['date']}" style="color: black">📄&emsp;${comment} <span style="color: #808080; font-size: 13px">&lt;더보기&gt;</span></a> <br>
                                             <time datetime="2016-1-1">${time_before}</time>
                                         </div>
                                     </div>`
@@ -181,8 +181,10 @@ function get_food_posts() {
                                                     
                                                 </div>
                                             </div>
-                                            <a href="/foodcontent/${foodloc['date']}" style="color: black">🍚&emsp;${foodloc['food_name']}<br>
-                                            <a href="/foodcontent/${foodloc['date']}" style="color: black">📄&emsp;${foodloc['food_comment']}</a> <br><br>
+                                            <div>
+                                                <a href="/foodcontent/${foodloc['date']}" style="color: black">🍚&emsp;${foodloc['food_name']}<br>
+                                                <a href="/foodcontent/${foodloc['date']}" style="color: black">📄&emsp;${foodloc['food_comment']}</a> <br>
+                                            </div>
                                             <time datetime="2016-1-1">${time_before}</time>
                                         </div>
                                     </div>`
@@ -229,7 +231,7 @@ function get_movie_posts() {
                                                 </div>
                                             </div>
                                                 <a href="/moviecontent/${movie['date']}" style="color: black">🎬&emsp;${movie['movie_name']}<br>
-                                                <a href="/moviecontent/${movie['date']}" style="color: black">📄&emsp;${comment}...<br>
+                                                <a href="/moviecontent/${movie['date']}" style="color: black">📄&emsp;${comment} <span style="color: #808080; font-size: 13px">&lt;더보기&gt;</span><br>
                                             <time datetime="2016-1-1">${time_before}</time>
                                         </div>
                                     </div>`
@@ -255,7 +257,7 @@ function get_movie_posts() {
                                                 </div>
                                             </div>
                                                 <a href="/moviecontent/${movie['date']}" style="color: black">🎬&emsp;${movie['movie_name']}<br>
-                                                <a href="/moviecontent/${movie['date']}" style="color: black">📄&emsp;${movie['movie_comment']}<br><br>
+                                                <a href="/moviecontent/${movie['date']}" style="color: black">📄&emsp;${movie['movie_comment']}<br>
                                             <time datetime="2016-1-1">${time_before}</time>
                                         </div>
                                     </div>`
@@ -267,4 +269,6 @@ function get_movie_posts() {
         }
     })
 }
+
+
 
