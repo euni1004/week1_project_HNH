@@ -210,7 +210,7 @@ function get_movie_posts() {
                     if (movie['movie_comment'].length > 20) {
                         html_temp = `<div class="card">
                                         <div class="card-image">
-                                            <a class="image is-4by3">
+                                            <a class="image is-4by3" href="/moviecontent/${movie['date']}">
                                                 <img src="/static/${movie['movie_file']}" alt="Placeholder image">
                                             </a>
                                         </div>
@@ -228,15 +228,15 @@ function get_movie_posts() {
                                                     
                                                 </div>
                                             </div>
-                                                🎬&emsp;${movie['movie_name']}<br>
-                                                📄&emsp;${comment}...<br>
+                                                <a href="/moviecontent/${movie['date']}" style="color: black">🎬&emsp;${movie['movie_name']}<br>
+                                                <a href="/moviecontent/${movie['date']}" style="color: black">📄&emsp;${comment}...<br>
                                             <time datetime="2016-1-1">${time_before}</time>
                                         </div>
                                     </div>`
                     } else {
                         html_temp = `<div class="card">
                                         <div class="card-image">
-                                            <a class="image is-4by3">
+                                            <a class="image is-4by3" href="/moviecontent/${movie['date']}">
                                                 <img src="/static/${movie['movie_file']}" alt="Placeholder image">
                                             </a>
                                         </div>
@@ -254,8 +254,8 @@ function get_movie_posts() {
                                                     
                                                 </div>
                                             </div>
-                                                🎬&emsp;${movie['movie_name']}<br>
-                                                📄&emsp;${movie['movie_comment']}<br><br>
+                                                <a href="/moviecontent/${movie['date']}" style="color: black">🎬&emsp;${movie['movie_name']}<br>
+                                                <a href="/moviecontent/${movie['date']}" style="color: black">📄&emsp;${movie['movie_comment']}<br><br>
                                             <time datetime="2016-1-1">${time_before}</time>
                                         </div>
                                     </div>`
