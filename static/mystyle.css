@@ -43,9 +43,10 @@ input::-webkit-calendar-picker-indicator {
 .card {
     background-color: #CEF6CE;
     width:250px;
-    margin: 30px 0 auto 40px;
+    height: 400px;
+    margin: 30px 0 30px 40px;
     float: left;
-
+    border-radius: 2em;
 }
 
 .logoutbu {
@@ -54,8 +55,9 @@ input::-webkit-calendar-picker-indicator {
 
 .foodcontent{
     width: 75%;
-    margin: 0 auto;
+    margin: 30px auto 30px auto;
     background-color: #CEF6CE;
+    border-radius: 2em;
 }
 
 .section .media{
