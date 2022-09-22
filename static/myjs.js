@@ -132,8 +132,10 @@ function get_food_posts() {
                     let foodloc = foodlocs[i]
                     let time_post = new Date(foodloc["date"])
                     let time_before = time2str(time_post)
-
-                    let html_temp = `<div class="card">
+                    let comment = foodloc['food_comment'].substring(0, 21)
+                    let html_temp = ""
+                    if (foodloc['food_comment'].length > 20) {
+                        html_temp = `<div class="card">
                                         <div class="card-image">
                                             <a class="image is-4by3" href="/foodcontent/${foodloc['date']}">
                                                 <img src="/static/${foodloc['food_file']}" alt="Placeholder image">
@@ -153,10 +155,38 @@ function get_food_posts() {
                                                     
                                                 </div>
                                             </div>
-                                            <a href="/foodcontent/${foodloc['date']}" style="color: black">📄&emsp;${foodloc['food_comment']}</a> <br>
+                                            <a href="/foodcontent/${foodloc['date']}" style="color: black">🍚&emsp;${foodloc['food_name']}<br>
+                                            <a href="/foodcontent/${foodloc['date']}" style="color: black">📄&emsp;${comment}</a> <br>
                                             <time datetime="2016-1-1">${time_before}</time>
                                         </div>
                                     </div>`
+                    } else {
+                        html_temp = `<div class="card">
+                                        <div class="card-image">
+                                            <a class="image is-4by3" href="/foodcontent/${foodloc['date']}">
+                                                <img src="/static/${foodloc['food_file']}" alt="Placeholder image">
+                                            </a>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <a class="image is-48x48" href="/user/${foodloc['username']}">
+                                                        <img src="/static/${foodloc['profile_pic_real']}" alt="Placeholder image">
+        
+                                                    </a>
+                                                </div>
+                                                <div class="media-content">
+                                                    <a class="title is-4"href="/user/${foodloc['username']}">${foodloc['profile_name']}</a><br>
+                                                    <a class="subtitle is-6"  href="/user/${foodloc['username']}">@${foodloc['username']}</a>
+                                                    
+                                                </div>
+                                            </div>
+                                            <a href="/foodcontent/${foodloc['date']}" style="color: black">🍚&emsp;${foodloc['food_name']}<br>
+                                            <a href="/foodcontent/${foodloc['date']}" style="color: black">📄&emsp;${foodloc['food_comment']}</a> <br><br>
+                                            <time datetime="2016-1-1">${time_before}</time>
+                                        </div>
+                                    </div>`
+                    }
                     $("#main-card").append(html_temp)
                 }
             }
@@ -170,13 +200,15 @@ function get_movie_posts() {
         type: "GET", url: `/get_movieposts`, data: {}, success: function (response) {
             console.log(response)
             if (response["result"] == "success") {
-                let movies= response["movies"]
+                let movies = response["movies"]
                 for (let i = 0; i < movies.length; i++) {
                     let movie = movies[i]
                     let time_post = new Date(movie["date"])
                     let time_before = time2str(time_post)
-
-                    let html_temp = `<div class="card">
+                    let comment = movie['movie_comment'].substring(0, 21)
+                    let html_temp = ""
+                    if (movie['movie_comment'].length > 20) {
+                        html_temp = `<div class="card">
                                         <div class="card-image">
                                             <a class="image is-4by3">
                                                 <img src="/static/${movie['movie_file']}" alt="Placeholder image">
@@ -196,11 +228,39 @@ function get_movie_posts() {
                                                     
                                                 </div>
                                             </div>
-                                                🎬&emsp;${movie['movie_name']} <br>
-                                                📄&emsp;${movie['movie_comment']} <br>
+                                                🎬&emsp;${movie['movie_name']}<br>
+                                                📄&emsp;${comment}...<br>
                                             <time datetime="2016-1-1">${time_before}</time>
                                         </div>
                                     </div>`
+                    } else {
+                        html_temp = `<div class="card">
+                                        <div class="card-image">
+                                            <a class="image is-4by3">
+                                                <img src="/static/${movie['movie_file']}" alt="Placeholder image">
+                                            </a>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <a class="image is-48x48" href="/user/${movie['username']}">
+                                                        <img src="/static/${movie['profile_pic_real']}" alt="Placeholder image">
+
+                                                    </a>
+                                                </div>
+                                                <div class="media-content">
+                                                    <a class="title is-4"href="/user/${movie['username']}">${movie['profile_name']}</a><br>
+                                                    <a class="subtitle is-6"  href="/user/${movie['username']}">@${movie['username']}</a>
+                                                    
+                                                </div>
+                                            </div>
+                                                🎬&emsp;${movie['movie_name']}<br>
+                                                📄&emsp;${movie['movie_comment']}<br><br>
+                                            <time datetime="2016-1-1">${time_before}</time>
+                                        </div>
+                                    </div>`
+                    }
+
                     $("#main-card").append(html_temp)
                 }
             }
